@@ -19,10 +19,10 @@ countHiddenDirectories=0
 countLinks=0
 standardCommand="ls -lA | grep -c "
 recursiveCommand="ls -lAR | grep -c "
-standardFileRegex="^-.*[A-Z].{10}[0-9]\s[^.]"
-hiddenFileRegex=""
-standardDirectoryRegex="^d.*[A-Z].{10}[0-9]\s[^.]"
-hiddenDirectoryRegex=""
+standardFileRegex="'^-.*\s[^.]\S*$'"
+hiddenFileRegex="'^-.*\s[.]\S*$'"
+standardDirectoryRegex="'^d.*\s[^.]\S*$'"
+hiddenDirectoryRegex="'^d.*\s[.]\S*$'"
 linkRegex="^l"
 
 # Output usage instructions to the console
@@ -35,10 +35,10 @@ printUsage() {
 # Output results to the console
 printOutput() {
   echo "Standard files: " $countStandardFiles
-  #echo "Hidden files: " $countHiddenFiles
-  #echo "Standard directories: " $countStandardDirectories
-  #echo "Hidden directories: " $countHiddenDirectories
-  #echo "Links: " $countLinks
+  echo "Hidden files: " $countHiddenFiles
+  echo "Standard directories: " $countStandardDirectories
+  echo "Hidden directories: " $countHiddenDirectories
+  echo "Links: " $countLinks
 }
 
 # Parse arguments and perform counting
